@@ -205,7 +205,7 @@ describe('TEST 4', () => {
     cy.get('input').first().should('be.visible').type('-1');
 
     //Appel Page Panier
-    cy.get('button').first().should('be.visible').click();
+    cy.get('button').contains("Ajouter au panier").first().should('be.visible').click();
 
     //La page ne doit pas changer (boutton disabled) car quantité limite = -1
     cy.url().should('eq', 'http://localhost:4200/#/products/5');
@@ -257,9 +257,9 @@ describe('TEST 4', () => {
     cy.get('input').first().should('be.visible').type('50');
 
     //Appel Page Panier
-    cy.get('button').first().should('be.visible').click();
+    cy.get('button').contains("Ajouter au panier").first().should('be.visible').click();
 
-    //La page ne doit pas changer (boutton disabled) car quantité limite supérieur à 20 = 50
+    //La page ne doit pas changer (boutton disabled) car quantité limite supérieur à 20 => 50
     cy.url().should('eq', 'http://localhost:4200/#/products/5');
 
   })
