@@ -1,25 +1,24 @@
 # EcoBlissBath
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+- Use __Symfony__ for API and __MySql__ for DataBase
 
-## FrontEnd:
-
+>## FrontEnd:
 ### Angular start :
----
+```
 Run `npm start`
----
+```
 ### Cypress Start :
----
+```
 Run `npx cypress run`
----
+```
 
-
-## Docker Backend :
+>## Docker Backend :
 ### Start
----
+```
 Run `docker-compose up -d`
----
+```
 ### Stop :
----
+```
 Run `docker-compose down`
----
+```
