@@ -7,19 +7,19 @@
 >## FrontEnd
 ### Angular start :
 ```
-Run `npm start`
+npm start
 ```
 ### Cypress Start :
 ```
-Run `npx cypress run`
+npx cypress run
 ```
 
 >## Docker Backend
 ### Start
 ```
-Run `docker-compose up -d`
+docker-compose up -d
 ```
 ### Stop :
 ```
-Run `docker-compose down`
+docker-compose down
 ```
