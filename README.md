@@ -4,7 +4,7 @@
 - Use __Cypress__ for testing interface and API.
 - Use __Symfony__ for API and __MySql__ for DataBase.
 
->## FrontEnd:
+>## FrontEnd
 ### Angular start :
 ```
 Run `npm start`
@@ -14,7 +14,7 @@ Run `npm start`
 Run `npx cypress run`
 ```
 
->## Docker Backend :
+>## Docker Backend
 ### Start
 ```
 Run `docker-compose up -d`
