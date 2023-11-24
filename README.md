@@ -35,8 +35,6 @@ docker-compose up -d
 ### Stop :
 ```
 docker-compose down
-<<<<<<< HEAD
+
 ```
-=======
-```
->>>>>>> a3418e9e39f27de230446882216698f690c90083
+
