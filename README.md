@@ -5,6 +5,10 @@
 - Use __Symfony__ for API and __MySql__ for DataBase.
 
 >## FrontEnd
+> ### First Action :
+```
+npm install
+```
 ### Angular start :
 ```
 npm start
