@@ -122,19 +122,15 @@ describe('TEST 4', () => {
       timeout: 1000
     }).should('eq', "http://localhost:4200/#/cart");
 
-    cy.wait('@detailPanier');
-    
-    cy.wait('@me');
+    cy.wait('@detailPanier').should((interception) => {
+      expect(interception).to.exist;
+      expect(interception.response.statusCode).to.equal(200);
+    });
 
-    // cy.wait('@detailPanier').should((interception) => {
-    //   expect(interception).to.exist;
-    //   expect(interception.response.statusCode).to.equal(200);
-    // });
-
-    // cy.wait('@me').should((interception) => {
-    //   expect(interception).to.exist;
-    //   expect(interception.response.statusCode).to.equal(200);
-    // });
+    cy.wait('@me').should((interception) => {
+      expect(interception).to.exist;
+      expect(interception.response.statusCode).to.equal(200);
+    });
 
     cy.get('@detailPanier').should('not.be.null').then((panierElement) => {
 
