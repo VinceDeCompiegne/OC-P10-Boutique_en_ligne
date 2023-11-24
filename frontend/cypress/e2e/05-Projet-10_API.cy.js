@@ -319,7 +319,13 @@ describe('Tests API', () => {
 
     cy.readFile('cypress/fixtures/profile.json').then((profile) => {
 
-      let index = parseInt(profile.id, 10);
+      let index = parseInt(profile.id, 10) + 1;
+
+      cy.writeFile('cypress/fixtures/profile.json', {
+        id: index,
+        name: 'Jane',
+        email: 'jane@example.com',
+      })
 
       const userData = {
         "email": `TestEmail${index}@str.net`,
@@ -343,13 +349,6 @@ describe('Tests API', () => {
       }).then((response) => {
 
         expect(response.status).to.eq(200);
-
-
-        cy.writeFile('cypress/fixtures/profile.json', {
-          id: index + 1,
-          name: 'Jane',
-          email: 'jane@example.com',
-        })
 
       });
 

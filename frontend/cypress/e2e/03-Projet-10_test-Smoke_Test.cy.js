@@ -56,6 +56,8 @@ describe('SMOKE TESTS', () => {
 
     cy.wait(3000);
 
+    cy.get('h1').scrollIntoView();
+
     cy.get('.stock').eq(0).should('be.visible').then((stockElement) => {
 
       const stockText = stockElement.text();

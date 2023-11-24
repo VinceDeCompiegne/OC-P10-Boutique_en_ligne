@@ -1,0 +1,11 @@
+[{
+    "name":"1 produit",
+    "value":"1"
+},
+{
+    "name":"-1 produit",
+    "value":"-1"
+},{
+    "name":">20 produit",
+    "value":"50"
+}]
