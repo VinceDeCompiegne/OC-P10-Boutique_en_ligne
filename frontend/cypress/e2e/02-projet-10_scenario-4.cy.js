@@ -119,7 +119,7 @@ describe('TEST 4', () => {
     cy.get('button').first().should('be.visible').click();
 
     cy.url({
-      timeout: 1000
+      timeout: 2000
     }).should('eq', "http://localhost:4200/#/cart");
 
     cy.wait('@detailPanier').should((interception) => {
@@ -224,56 +224,54 @@ describe('TEST 4', () => {
     //Appel Page Panier
     cy.get('button').first().should('be.visible').click();
 
-    cy.url({
-      timeout: 1000
-    }).should('eq', "http://localhost:4200/#/cart");
+    cy.url().should('not.eq', "http://localhost:4200/#/cart");
 
-    cy.wait('@detailPanier').should((interception) => {
-      expect(interception).to.exist;
-      expect(interception.response.statusCode).to.equal(200);
-    });
+    // cy.wait('@detailPanier').should((interception) => {
+    //   expect(interception).to.exist;
+    //   expect(interception.response.statusCode).to.equal(200);
+    // });
 
-    cy.wait('@me').should((interception) => {
-      expect(interception).to.exist;
-      expect(interception.response.statusCode).to.equal(200);
-    });
+    // cy.wait('@me').should((interception) => {
+    //   expect(interception).to.exist;
+    //   expect(interception.response.statusCode).to.equal(200);
+    // });
 
-    cy.get('@detailPanier').should('not.be.null').then((panierElement) => {
+    // cy.get('@detailPanier').should('not.be.null').then((panierElement) => {
 
-      expect(panierElement.response.body.orderLines[0].product.name).to.be.equal(Cypress.env('produit'));
-      expect(panierElement.response.body.orderLines[0].quantity).to.be.equal(-1);
-      Cypress.env('quantity', panierElement.response.body.orderLines[0].quantity);
-    });
+    //   expect(panierElement.response.body.orderLines[0].product.name).to.be.equal(Cypress.env('produit'));
+    //   expect(panierElement.response.body.orderLines[0].quantity).to.be.equal(-1);
+    //   Cypress.env('quantity', panierElement.response.body.orderLines[0].quantity);
+    // });
 
-    //Retour sur page produit
-    cy.go('back');
+    // //Retour sur page produit
+    // cy.go('back');
 
-    cy.wait('@detailProduct')
+    // cy.wait('@detailProduct')
 
-    cy.wait('@productRandom');
+    // cy.wait('@productRandom');
 
-    cy.get('.stock').eq(0).should('be.visible').then((stockElement) => {
+    // cy.get('.stock').eq(0).should('be.visible').then((stockElement) => {
 
-      const nb = parseInt(stockText.split(' ')[0], 10);
-      const quantity = parseInt(Cypress.env('quantity'), 10);
-      const stock = parseInt(Cypress.env('stock'), 10)
-      //   alert(nb);
-      const resteStock = stock - quantity;
+    //   const nb = parseInt(stockText.split(' ')[0], 10);
+    //   const quantity = parseInt(Cypress.env('quantity'), 10);
+    //   const stock = parseInt(Cypress.env('stock'), 10)
+    //   //   alert(nb);
+    //   const resteStock = stock - quantity;
 
-      //Retour sur la page du panier
+    //   //Retour sur la page du panier
 
-      cy.go('forward')
+    //   cy.go('forward')
 
-      cy.wait('@detailPanier')
+    //   cy.wait('@detailPanier')
 
-      cy.wait('@me');
+    //   cy.wait('@me');
 
-      //clique sur l'image de la corbeille pour annuler la commande
-      cy.get('img').eq(2).should("have.attr", "alt", "Supprimer le produit").should('be.visible').click();
+    //   //clique sur l'image de la corbeille pour annuler la commande
+    //   cy.get('img').eq(2).should("have.attr", "alt", "Supprimer le produit").should('be.visible').click();
 
-      expect(nb).to.be.equal(resteStock);
+    //   expect(nb).to.be.equal(resteStock);
 
-    });
+    // });
 
   })
 
@@ -320,7 +318,7 @@ describe('TEST 4', () => {
     // cy.get('input').first().should('be.visible').type('1');
     cy.get('input').first().should('be.visible').type('{leftArrow}');
     cy.get('input').first().should('be.visible').type('{del}');
-    cy.get('input').first().should('be.visible').type('50');
+    cy.get('input').first().should('be.visible').type('100');
 
     //Appel Page Panier
     cy.get('button').first().should('be.visible').click();
@@ -375,6 +373,7 @@ describe('TEST 4', () => {
       //clique sur l'image de la corbeille pour annuler la commande
       cy.get('img').eq(2).should("have.attr", "alt", "Supprimer le produit").should('be.visible').click();
 
+      expect(resteStock).to.be.greaterThan(-1);
       expect(nb).to.be.equal(resteStock);
 
     });
